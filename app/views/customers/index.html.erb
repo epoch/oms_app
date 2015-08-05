@@ -1,0 +1,19 @@
+customers
+
+
+<div style="float: right;">
+<%= link_to('+ new customer', new_customer_path) %>
+
+</div>
+
+<%= form_tag '/somewhere', method: :post do %>
+
+  <% @customers.each do |customer| %>
+
+    <input type="checkbox" name="customers[]" value="<%= customer.id %>">  <a href="<%= customer_path(customer) %>"><div><%= customer.name %></div></a>
+
+  <% end %>
+
+  <button>delete</button>
+<% end %>
+
