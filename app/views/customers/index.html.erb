@@ -1,19 +1,26 @@
-customers
+<%= content_for :title_bar do %>
+  <li></li>
+  <li class="title">Customers</li>
+  <li><%= link_to('+', new_customer_path) %></li>
+<% end %>
 
 
-<div style="float: right;">
-<%= link_to('+ new customer', new_customer_path) %>
+<p style="text-align: center;">
+<%= text_field_tag :search %>
+</p>
 
-</div>
+
+
 
 <%= form_tag '/somewhere', method: :post do %>
 
   <% @customers.each do |customer| %>
-
-    <input type="checkbox" name="customers[]" value="<%= customer.id %>">  <a href="<%= customer_path(customer) %>"><div><%= customer.name %></div></a>
+    <div class="line">
+      <div><%= customer.name %></div>
+      <div><%= link_to '>>', '/' %></div> 
+    </div>
 
   <% end %>
 
-  <button>delete</button>
 <% end %>
 
